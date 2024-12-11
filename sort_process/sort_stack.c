@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: junjun <junjun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/08 16:02:14 by xhuang            #+#    #+#             */
-/*   Updated: 2024/12/11 01:07:11 by junjun           ###   ########.fr       */
+/*   Created: 2024/12/11 15:46:22 by junjun            #+#    #+#             */
+/*   Updated: 2024/12/11 15:46:24 by junjun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,57 +63,7 @@ void	*sort_five(t_stack_node **a, t_stack_node **b)
 	
 }
 
-void    counting_sort(int *arr, int len, int exp)
+void    sort_stack(t_stack_node **a, t_stack_node **b, int *arr)
 {
-    int output[len];
-    int count[10] = {0};
-    int i;
-    int digit;
-    
-    i = 0;
-    while (i < len)
-    {
-        digit = (arr[i] / exp) % 10;
-        count[digit]++;
-        i++;
-    }
-    i = 1;
-    while (i < 10)
-    {
-        count[i] += count[i - 1];
-        i++;
-    }
-    i = len - 1;
-    while (i >= 0)
-    {
-        digit = (arr[i] / exp) % 10;
-        output[count[digit] - 1] = arr[i];
-        count[digit]--;
-        i--;
-    }
-    i = 0;
-    while (i < len)
-        arr[i++] = output[i++];
-    
-}
-
-void    radix_sort(int *arr, int len)
-{
-    int exp;
-    int max;
-    int range;
-
-    exp = 1;
-    max = 0;
-    while (*arr)
-    {
-        if (max < *arr)
-            max = *arr;
-        arr++;
-    }
-    while (max / exp > 0)
-    {
-        counting_sort(arr, len, exp);
-        exp *= 10;
-    }
+    //sort stack with int array and push to a
 }

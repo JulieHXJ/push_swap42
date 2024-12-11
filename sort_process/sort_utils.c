@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: junjun <junjun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/07 12:34:46 by xhuang            #+#    #+#             */
-/*   Updated: 2024/12/11 00:55:11 by junjun           ###   ########.fr       */
+/*   Created: 2024/12/11 15:46:08 by junjun            #+#    #+#             */
+/*   Updated: 2024/12/11 15:46:11 by junjun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ t_stack_node	*max_node(t_stack_node *a)
 	return (max);
 }
 
-int *dup_arr(t_stack_node **a)
+int *to_arr(t_stack_node **a)
 {
 	int *arr;
 	int len;
@@ -81,8 +81,9 @@ int *dup_arr(t_stack_node **a)
 		return (NULL);
 	while (*a)
 	{
-		arr[i++] = (*a)->data;
+		arr[i] = (*a)->data;
 		*a = (*a)->next;
+		i++;
 	}
 	return (arr);
 }
