@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xhuang <xhuang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: junjun <junjun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 12:34:52 by xhuang            #+#    #+#             */
-/*   Updated: 2024/12/08 17:46:15 by xhuang           ###   ########.fr       */
+/*   Updated: 2024/12/10 20:39:47 by junjun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,28 @@ static bool	cmd_error(char *s)
 	return (false);
 }
 
-static bool	is_dup(t_stack_node **stack, int n)
+static bool	is_dup(t_stack_node *stack, int n)
 {
 	t_stack_node	*temp;
 
-	if (!stack || !*stack)
+	if (!stack)
 	{
 		return (false);
 	}
-	temp = *stack;
-	while (temp)
+	while (stack)
 	{
-		if (temp->data == n)
+		if (stack->data == n)
 		{
 			return (true);
 		}
-		temp = temp->next;
+		stack = stack->next;
 	}
 	return (false);
+}
+
+void	error_free(t_stack_node **a)
+{
+	
 }
 
 /*
@@ -61,7 +65,7 @@ bool	check_args(t_stack_node *stack, char **av)
 	{
 		if (cmd_error(av[i]))
 		{
-			error_handling();
+			error_free();
 			return (false);
 		}
 		nbr = ft_atol(av[i]);

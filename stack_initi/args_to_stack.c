@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   args_to_stack.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xhuang <xhuang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: junjun <junjun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 12:51:03 by xhuang            #+#    #+#             */
-/*   Updated: 2024/12/08 14:47:48 by xhuang           ###   ########.fr       */
+/*   Updated: 2024/12/10 20:41:41 by junjun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,12 @@ void	append_node(t_stack_node **stack, int n)
 	new->data = n;
 	if (!*stack)
 	{
-		// when stack is empty
 		*stack = new;
 		new->prev = NULL;
 	}
 	else
 	{
-		last = last_node(*stack); // function to fine the last node
+		last = last_node(*stack);
 		last->next = new;
 		new->prev = last;
 	}
@@ -74,7 +73,7 @@ void	args_to_stack(t_stack_node **a, char **av)
 	i = 0;
 	while (av[i])
 	{
-		if (check_args == 0)
+		if (!check_args)
 		{
 			error free return ;
 		}
