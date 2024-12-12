@@ -6,7 +6,7 @@
 /*   By: junjun <junjun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 15:46:41 by junjun            #+#    #+#             */
-/*   Updated: 2024/12/11 15:46:43 by junjun           ###   ########.fr       */
+/*   Updated: 2024/12/12 23:25:13 by junjun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ long	ft_atol(char *s)
 	return (nbr * sign);
 }
 
-void	append_node(t_stack_node **stack, int n)
+void	append_node(t_stack **stack, int n)
 {
-	t_stack_node	*new;
-	t_stack_node	*last;
+	t_stack	*new;
+	t_stack	*last;
 
 	if (!stack)
 		return ;
-	new = malloc(sizeof(t_stack_node) * 1);
+	new = malloc(sizeof(t_stack) * 1);
 	if (!new)
 		return ;
 	new->next = NULL;
@@ -65,7 +65,7 @@ void	append_node(t_stack_node **stack, int n)
 /*
 take arguments to initialize the stack a.
 */
-void	args_to_stack(t_stack_node **a, char **av)
+void	args_to_stack(t_stack **a, char **av)
 {
 	long	nbr;
 	int		i;

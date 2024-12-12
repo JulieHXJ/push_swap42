@@ -6,13 +6,33 @@
 /*   By: junjun <junjun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 15:46:31 by junjun            #+#    #+#             */
-/*   Updated: 2024/12/11 15:53:57 by junjun           ###   ########.fr       */
+/*   Updated: 2024/12/12 23:25:13 by junjun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    counting_sort(int *arr, int len, int exp)
+static int *to_arr(t_stack **a)
+{
+	int *arr;
+	int len;
+	int i;
+	
+	i = 0;
+	len = stack_length(*a);
+	arr = malloc(sizeof(int) * len);
+	if (!arr)
+		return (NULL);
+	while (*a)
+	{
+		arr[i] = (*a)->data;
+		*a = (*a)->next;
+		i++;
+	}
+	return (arr);
+}
+
+static void    counting_sort(int *arr, int len, int exp)
 {
     int output[len];
     int count[10] = {0};
@@ -46,7 +66,7 @@ void    counting_sort(int *arr, int len, int exp)
     
 }
 
-void    radix_sort(int *arr, int len)
+static void    radix_sort(int *arr, int len)
 {
     int exp;
     int max;
@@ -80,28 +100,9 @@ void    radix_sort(int *arr, int len)
 	}
 }
 
-void	merge_array(int *arr, int *sub_arr, int len, int start)
+int	*sort_arr(t_stack *a, int len)
 {
-	int i;
-	int j;
-
-	i = start;
-	if (len > 0 && sub_arr[0] < 0)
-	{
-		j = len - 1;
-		while (j >= 0)
-			arr[i++] = sub_arr[j--];
-	}
-	else
-	{
-		j = 0;
-		while (j < len)
-			arr[i++] = sub_arr[j++];
-	}
-}
-
-void	split_sort(int *arr, int len)
-{
+	int *arr = to_arr(a);
     int *arr_pos;
     int *arr_neg;
 	int pos_len = 0;
@@ -121,13 +122,13 @@ void	split_sort(int *arr, int len)
 			arr_neg[neg_len++] = arr[i];
 		i++;
 	}
-	if (pos_len > 0)
-		radix_sort(arr_pos, pos_len);
+	radix_sort(arr_pos, pos_len);
 	if (neg_len > 0)
 		radix_sort(arr_neg, neg_len);
-	merge_array(arr, arr_neg, neg_len, 0);
-	merge_array(arr, arr_pos, pos_len, neg_len);
+	ft_memcpy(arr, arr_neg, (size_t)neg_len);
+	ft_memcpy(arr + neg_len, arr_pos, (size_t)pos_len);
     free(arr_neg);
 	free(arr_pos);
+	return(arr);
 }
 

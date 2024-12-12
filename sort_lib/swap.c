@@ -3,50 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xhuang <xhuang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: junjun <junjun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 14:03:30 by xhuang            #+#    #+#             */
-/*   Updated: 2024/12/08 17:34:26 by xhuang           ###   ########.fr       */
+/*   Updated: 2024/12/13 00:18:40 by junjun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	swap(t_stack_node **stack)
+static void	swap(t_stack **stack)
 {
-	t_stack_node	*first;
-	t_stack_node	*second;
+	t_stack	*first;
+	t_stack	*second;
 
-	first = *stack;
-	second = first->next;
 	if (!(*stack) || !(*stack)->next)
 		return ;
+	first = *stack;
+	second = first->next;
+
 	first->next = second->next;
-	if (second->next)
-	{
-		second->next->prev = first;
-	}
-	second->prev = NULL;
 	second->next = first;
-	first->prev = second;
 	*stack = second;
 }
 
-void	sa(t_stack_node **a, bool print)
+void	sa(t_stack **a, bool print)
 {
 	swap(a);
 	if (!print)
 		ft_printf("sa\n");
 }
 
-void	sb(t_stack_node **b, bool print)
+void	sb(t_stack **b, bool print)
 {
 	swap(b);
 	if (!print)
 		ft_printf("sb\n");
 }
 
-void	ss(t_stack_node **a, t_stack_node **b, bool print)
+void	ss(t_stack **a, t_stack **b, bool print)
 {
 	swap(a);
 	swap(b);

@@ -6,50 +6,48 @@
 # include <limits.h>
 # include <stdbool.h>
 
-typedef struct s_stack_node
+typedef struct s_stack
 {
 	int					data;
-	int					index;
-	int					push_cost;
-	bool				above_med;
-	bool				cheapest;
-	struct s_stack_node	*next;
-	struct s_stack_node	*prev;
-	struct s_stack_node	*target;
-}						t_stack_node;
+	int					targ_index;
+
+	struct s_stack	*next;
+}						t_stack;
 
 // initialization
 long					ft_atol(char *s);
-void					append_node(t_stack_node **stack, int n);
-t_stack_node			*split_to_stack(char *s, char c);
-void					args_to_stack(t_stack_node **a, char **av);
-bool					check_args(t_stack_node *stack, char **av);
+void					append_node(t_stack **stack, int n);
+t_stack			*split_to_stack(char *s, char c);
+void					args_to_stack(t_stack **a, char **av);
+bool					check_args(t_stack *stack, char **av);
 
 // sorting library
-void					sa(t_stack_node **a, bool print);
-void					sb(t_stack_node **b, bool print);
-void					ss(t_stack_node **a, t_stack_node **b, bool print);
-void					ra(t_stack_node **a, bool print);
-void					rb(t_stack_node **b, bool print);
-void					rr(t_stack_node **a, t_stack_node **b, bool print);
-void					rra(t_stack_node **a, bool print);
-void					rrb(t_stack_node **b, bool print);
-void					rrr(t_stack_node **a, t_stack_node **b, bool print);
-void					pa(t_stack_node *a, t_stack_node *b, bool print);
-void					pb(t_stack_node *a, t_stack_node *b, bool print);
+void					sa(t_stack **a, bool print);
+void					sb(t_stack **b, bool print);
+void					ss(t_stack **a, t_stack **b, bool print);
+void					ra(t_stack **a, bool print);
+void					rb(t_stack **b, bool print);
+void					rr(t_stack **a, t_stack **b, bool print);
+void					rra(t_stack **a, bool print);
+void					rrb(t_stack **b, bool print);
+void					rrr(t_stack **a, t_stack **b, bool print);
+void					pa(t_stack *a, t_stack *b, bool print);
+void					pb(t_stack *a, t_stack *b, bool print);
 
 //
-bool					is_sorted(t_stack_node *a);
-int						stack_length(t_stack_node *a);
-t_stack_node			*last_node(t_stack_node *a);
-t_stack_node			*min_node(t_stack_node *a);
-t_stack_node			*max_node(t_stack_node *a);
+bool					is_sorted(t_stack *a);
+int						stack_length(t_stack *a);
+t_stack			*last_node(t_stack *a);
+t_stack			*min_node(t_stack *a);
+t_stack			*max_node(t_stack *a);
 
-t_stack_node			*sort_three(t_stack_node *a);
-t_stack_node			*sort_stack(t_stack_node *a, t_stack_node *b);
+void	*sort_three(t_stack **a);
+void	*sort_five(t_stack **a, t_stack **b);
+void	radix_sort(t_stack **a, t_stack **b, int len);
+int	*sort_arr(t_stack *a);
 
 // error handling
-void					free_stack(t_stack_node *a);
-void					error_handling(t_stack_node *a);
+void					free_stack(t_stack *a);
+void					error_handling(t_stack *a);
 
 #endif

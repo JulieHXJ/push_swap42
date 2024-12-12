@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_to_stack.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xhuang <xhuang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: junjun <junjun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 14:22:37 by xhuang            #+#    #+#             */
-/*   Updated: 2024/12/08 14:45:31 by xhuang           ###   ########.fr       */
+/*   Updated: 2024/12/12 23:25:13 by junjun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ static char	*get_next_word(char *s, char c)
 /*
 spliting the input string into stack a.
 */
-t_stack_node	*split_to_stack(char *s, char c)
+t_stack	*split_to_stack(char *s, char c)
 {
-	t_stack_node	*stack;
+	t_stack	*stack;
 	int				wc;
 	int				i;
 	int				data;

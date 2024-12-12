@@ -6,7 +6,7 @@
 /*   By: junjun <junjun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 15:46:45 by junjun            #+#    #+#             */
-/*   Updated: 2024/12/11 15:46:47 by junjun           ###   ########.fr       */
+/*   Updated: 2024/12/12 23:25:13 by junjun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ static bool	cmd_error(char *s)
 	return (false);
 }
 
-static bool	is_dup(t_stack_node *stack, int n)
+static bool	is_dup(t_stack *stack, int n)
 {
-	t_stack_node	*temp;
+	t_stack	*temp;
 
 	if (!stack)
 	{
@@ -46,7 +46,7 @@ static bool	is_dup(t_stack_node *stack, int n)
 	return (false);
 }
 
-void	error_free(t_stack_node **a)
+void	error_free(t_stack **a)
 {
 	
 }
@@ -55,7 +55,7 @@ void	error_free(t_stack_node **a)
 check input arguments or string ;
 handle ,
 */
-bool	check_args(t_stack_node *stack, char **av)
+bool	check_args(t_stack *stack, char **av)
 {
 	long	nbr;
 	int		i;
@@ -87,7 +87,7 @@ bool	check_args(t_stack_node *stack, char **av)
 /*
 check if stack a is already in right order
 */
-bool	is_sorted(t_stack_node *a)
+bool	is_sorted(t_stack *a)
 {
 	while (a->next)
 	{

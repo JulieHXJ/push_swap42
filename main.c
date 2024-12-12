@@ -4,8 +4,8 @@
 
 int	main(int ac, char **av)
 {
-	t_stack_node	*a;
-	t_stack_node	*b;
+	t_stack	*a;
+	t_stack	*b;
 	int	len;
 
 	a = NULL;
@@ -17,22 +17,18 @@ int	main(int ac, char **av)
 	else
 	{
 		a = agrs_to_stack(av);
-		// if (check_args(a, av) == -1)
-		// 	return (free_stack(&a), -1);
 	}
 	len = stack_length(a);
 	if (!is_sorted(a))
 	{
 		if (len <= 3)
 			sort_three(a);
-		
 		else if (len > 3 && len < 6)
-		{
 			sort_five(a, b);
-		}
 		else
-			radix_sort(a, b);
+			sort_stack(a, b);
 	}
-	free_stack(&a);
+	free_stack(a);
+	free_stack(b);
 	return (0);
 }

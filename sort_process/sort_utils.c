@@ -6,13 +6,13 @@
 /*   By: junjun <junjun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 15:46:08 by junjun            #+#    #+#             */
-/*   Updated: 2024/12/11 15:46:11 by junjun           ###   ########.fr       */
+/*   Updated: 2024/12/13 00:09:32 by junjun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	stack_length(t_stack_node *a)
+int	stack_length(t_stack *a)
 {
 	int	i;
 
@@ -25,22 +25,19 @@ int	stack_length(t_stack_node *a)
 	return (i);
 }
 
-t_stack_node	*last_node(t_stack_node *a)
+t_stack	*last_node(t_stack *a)
 {
-	if (!a)
-		return (NULL);
 	while (a && a->next)
 		a = a->next;
 	return (a);
 }
 
-t_stack_node	*min_node(t_stack_node *a)
+t_stack	*min_node(t_stack *a)
 {
-	t_stack_node *min;
+	t_stack *min;
 	long		min_nbr;
 
-	if (!a)
-		return (NULL);
+	min = NULL;
 	min_nbr = LONG_MAX;
 	while (a)
 	{
@@ -54,36 +51,53 @@ t_stack_node	*min_node(t_stack_node *a)
 	return (min);
 }
 
-t_stack_node	*max_node(t_stack_node *a)
+t_stack	*max_node(t_stack *a)
 {
-	t_stack_node *max;
+	t_stack *max;
 
 	max = a;
 	while (a)
 	{
 		if (max->data < a->data)
-			max = a->next;
+			max = a;
 		a = a->next;
 	}
 	return (max);
 }
 
-int *to_arr(t_stack_node **a)
+bool	above_median(t_stack *stack, t_stack *node)
 {
-	int *arr;
-	int len;
-	int i;
-	
-	i = 0;
-	len = stack_length(*a);
-	arr = malloc(sizeof(int) * len);
-	if (!arr)
-		return (NULL);
-	while (*a)
+	int	position;
+	int	len;
+	t_stack	*temp;
+
+	position = 0;
+	len = stack_length(stack);
+	temp = stack;
+	while (temp)
 	{
-		arr[i] = (*a)->data;
-		*a = (*a)->next;
-		i++;
+		if (temp == node)
+			break;
+		position++;
+		if (position > len / 2)
+			return (false);
+		temp = temp->next;
 	}
-	return (arr);
+	return (true);
+}
+
+void	to_top(t_stack **stack, t_stack *node)
+{
+	bool	is_above = above_median(stack, node);
+
+	if (is_above)
+	{
+		while (*stack != node)
+			ra(stack, false);
+	}
+	else
+	{
+		while (*stack != node)
+			rra(stack, false);
+	}
 }
