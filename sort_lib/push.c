@@ -6,7 +6,7 @@
 /*   By: junjun <junjun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 15:45:51 by junjun            #+#    #+#             */
-/*   Updated: 2024/12/13 00:24:20 by junjun           ###   ########.fr       */
+/*   Updated: 2024/12/14 23:21:28 by junjun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ static void	push(t_stack **dst, t_stack **src)
 	}
 }
 
-void	pa(t_stack *a, t_stack *b, bool print)
+void	pa(t_stack **a, t_stack **b, bool print)
 {
 	push(a, b);
 	if (!print)
 		ft_printf("pa\n");
 }
 
-void	pb(t_stack *a, t_stack *b, bool print)
+void	pb(t_stack **a, t_stack **b, bool print)
 {
 	push(b, a);
 	if (!print)

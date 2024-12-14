@@ -6,7 +6,7 @@
 /*   By: junjun <junjun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 15:46:41 by junjun            #+#    #+#             */
-/*   Updated: 2024/12/12 23:25:13 by junjun           ###   ########.fr       */
+/*   Updated: 2024/12/13 00:38:59 by junjun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,22 +50,18 @@ void	append_node(t_stack **stack, int n)
 	new->next = NULL;
 	new->data = n;
 	if (!*stack)
-	{
 		*stack = new;
-		new->prev = NULL;
-	}
 	else
 	{
 		last = last_node(*stack);
 		last->next = new;
-		new->prev = last;
 	}
 }
 
 /*
 take arguments to initialize the stack a.
 */
-void	args_to_stack(t_stack **a, char **av)
+void	args_to_stack(t_stack *a, char **av)
 {
 	long	nbr;
 	int		i;
@@ -75,7 +71,7 @@ void	args_to_stack(t_stack **a, char **av)
 	{
 		if (!check_args)
 		{
-			error free return ;
+			error_handling() ;
 		}
 		nbr = ft_atol(av[i]);
 		append_node(a, (int)nbr);

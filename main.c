@@ -15,9 +15,7 @@ int	main(int ac, char **av)
 	else if (ac == 2)
 		a = split_to_stack(av[1], ' ');
 	else
-	{
-		a = agrs_to_stack(av);
-	}
+		args_to_stack(a, av);
 	len = stack_length(a);
 	if (!is_sorted(a))
 	{
@@ -26,7 +24,7 @@ int	main(int ac, char **av)
 		else if (len > 3 && len < 6)
 			sort_five(a, b);
 		else
-			sort_stack(a, b);
+			radix_sort(a, b, len);
 	}
 	free_stack(a);
 	free_stack(b);

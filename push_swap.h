@@ -12,6 +12,7 @@ typedef struct s_stack
 	int					targ_index;
 
 	struct s_stack	*next;
+	struct s_stack	*prev;
 }						t_stack;
 
 // initialization
@@ -45,6 +46,7 @@ void	*sort_three(t_stack **a);
 void	*sort_five(t_stack **a, t_stack **b);
 void	radix_sort(t_stack **a, t_stack **b, int len);
 int	*sort_arr(t_stack *a);
+void	to_top(t_stack **stack, t_stack *node);
 
 // error handling
 void					free_stack(t_stack *a);

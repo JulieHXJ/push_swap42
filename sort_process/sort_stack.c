@@ -6,7 +6,7 @@
 /*   By: junjun <junjun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 15:46:22 by junjun            #+#    #+#             */
-/*   Updated: 2024/12/13 00:13:25 by junjun           ###   ########.fr       */
+/*   Updated: 2024/12/14 23:37:44 by junjun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,44 +76,95 @@ static void	init_index(t_stack *a, int *arr)
 	}
 }
 
-static int   get_max_bits(t_stack *a)
-{
-    int max_index;
-    int max_bits;
 
-    max_index = stack_length(a) - 1;
-    max_bits = 0;
-    while ((max_index >> max_bits) != 0)
-       max_bits++;
-    return(max_bits);
+// void	radix_sort(t_stack **a, t_stack **b, int len)
+// {
+//     int *arr;
+//     int digit;
+//     int i;
+//     t_stack *node;
+    
+//     arr = sort_arr(a);
+// 	init_index(*a, arr);
+//     free_arr(arr);
+//     digit = 1;
+//     while (((len - 1) / digit) > 0)
+//     {
+//         i = 0;
+//         while (i <= 9)
+//         {
+//             node = *a;
+//             while (node)
+//             {
+//                 if ((node->targ_index / digit) % 10 == i)
+//                 {
+//                     to_top(a, node);
+//                     pb(a, b, false);
+//                 }
+//                 node = node->next;
+//             }
+//             i++;
+//         }
+//         while (stack_length(b) > 0)
+//             pa(a, b, false);
+//         digit *= 10;
+//     }
+// }
+
+/*
+merge sort
+*/
+t_stack *split_list(t_stack *head)
+{
+    t_stack *slow = head;
+    t_stack *fast = head;
+    while (fast && fast->next)
+    {
+        slow = slow->next; // slow pointer jump one node
+        fast = fast->next->next; //fast pointer jump two nodes
+    }
+    t_stack *mid = slow->next;
+    slow->next = NULL;
+    return (mid);
 }
 
-void	radix_sort(t_stack **a, t_stack **b, int len)
+//merge the sorted lists
+t_stack *merge_lists(t_stack **a, t_stack **b, t_stack *l1, t_stack *l2)
 {
-    int *arr;
-    int max_bits;
-    int i;
-    
-    arr = sort_arr(a);
-	init_index(*a, arr);
-    max_bits = get_max_bits(a);
-    free(arr);
-    i = 0;
-    while (i < max_bits)
+    while (l1 && l2)
     {
-        int j = 0;
-        while (j < len)
+        if (l1->data <= l2->data)
         {
-            if ((((*a)->targ_index >> i) & 1) == 1)
-                ra(a, false);
-            else
-                pb(a, b, false);
-            j++;
+            pb(&l1, b, false);
         }
-        while (stack_length(b) > 0)
+        else
         {
-            pa(a, b, false);
+            pb(&l2, b, false);
         }
-        i++;
     }
+    while (l1)
+    {
+        pb(&l1, b, false);
+    }
+    while (l2)
+    {
+        pb(&l2, b, false);
+    }
+    while (*b)
+    {
+        pa(a, b, false);
+    }
+}
+
+void merge_sort(t_stack **a, t_stack **b)
+{
+    if (!(*a) || !(*a)->next)
+    {
+        return;
+    }
+    t_stack *mid = split_list(*a);
+    // first half from *a , last half from &mid, stack b is for storage temp
+    merge_sort(a, b);
+    merge_sort(&mid, b);
+    merge_lists(a, b, *a, mid);
 }
