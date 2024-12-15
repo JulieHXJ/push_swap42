@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junjun <junjun@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xhuang <xhuang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 15:33:51 by xhuang            #+#    #+#             */
-/*   Updated: 2024/12/13 00:19:35 by junjun           ###   ########.fr       */
+/*   Updated: 2024/12/15 15:26:47 by xhuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 static void	rotate(t_stack **stack)
 {
-	t_stack	*first;
 	t_stack	*last;
 
 	if (!(*stack) || !(*stack)->next)
 		return ;
-	first = *stack;
-	last = last_node(stack);
-	
+
+	last = last_node(*stack);
+	last->next = *stack;
 	*stack = (*stack)->next;
-	first->next = NULL;
-	last->next = first;
+	(*stack)->prev = NULL;
+	last->next->prev = last;
+	last->next->next = NULL;
 }
 
 void	ra(t_stack **a, bool print)

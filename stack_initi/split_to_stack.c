@@ -3,14 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   split_to_stack.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junjun <junjun@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xhuang <xhuang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 14:22:37 by xhuang            #+#    #+#             */
-/*   Updated: 2024/12/12 23:25:13 by junjun           ###   ########.fr       */
+/*   Updated: 2024/12/14 17:09:30 by xhuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+long	ft_atol(char *s)
+{
+	int		sign;
+	long	nbr;
+	int		i;
+
+	sign = 1;
+	nbr = 0;
+	i = 0;
+	while (s[i] < 33)
+		i++;
+	if (s[i] == '-' || s[i] == '+')
+	{
+		if (s[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (s[i] >= '0' && s[i] <= '9')
+	{
+		nbr = nbr * 10 + (s[i] - '0');
+		i++;
+	}
+	return (nbr * sign);
+}
 
 static int	word_count(char *s, char c)
 {
@@ -67,10 +92,10 @@ spliting the input string into stack a.
 t_stack	*split_to_stack(char *s, char c)
 {
 	t_stack	*stack;
-	int				wc;
-	int				i;
-	int				data;
-	char			word;
+	int		wc;
+	int		i;
+	int		data;
+	char	*word;
 
 	stack = NULL;
 	wc = word_count(s, c);
@@ -79,12 +104,11 @@ t_stack	*split_to_stack(char *s, char c)
 	{
 		word = get_next_word(s, c);
 		if (!word)
-		{
-			return (NULL);
-		}
+			error_free(stack, NULL);
 		data = ft_atol(word);
 		free(word);
-		append_node(&stack, data);
+		if (!append_node(&stack, data))
+			error_free(stack, NULL);
 		i++;
 	}
 	return (stack);

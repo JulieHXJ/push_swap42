@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junjun <junjun@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xhuang <xhuang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 14:03:30 by xhuang            #+#    #+#             */
-/*   Updated: 2024/12/13 00:18:40 by junjun           ###   ########.fr       */
+/*   Updated: 2024/12/15 15:36:27 by xhuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,12 @@ static void	swap(t_stack **stack)
 		return ;
 	first = *stack;
 	second = first->next;
-
 	first->next = second->next;
+	if (second->next)
+		second->next->prev = first;
 	second->next = first;
+	second->prev = NULL;
+	first->prev = second;
 	*stack = second;
 }
 

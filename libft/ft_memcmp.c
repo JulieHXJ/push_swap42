@@ -1,48 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xhuang <xhuang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/07 12:34:49 by xhuang            #+#    #+#             */
-/*   Updated: 2024/12/15 15:15:06 by xhuang           ###   ########.fr       */
+/*   Created: 2024/10/09 17:27:42 by xhuang            #+#    #+#             */
+/*   Updated: 2024/10/11 15:28:07 by xhuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	free_arr(int *arr)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	if (arr)
-	{
-		free(arr);
-		arr = NULL;
-	}
-}
+	unsigned char	*str1;
+	unsigned char	*str2;
 
-void	free_stack(t_stack *a)
-{
-	t_stack	*temp;
-
-	while (a)
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
+	while (n--)
 	{
-		temp = a;
-		a = a->next;
-		free(temp);
+		if (*str1 != *str2)
+			return (*str1 - *str2);
+		str1++;
+		str2++;
 	}
-}
-
-void	error_free(t_stack *a, t_stack *b)
-{
-	ft_printf("Error\n");
-	if (a)
-	{
-		free_stack(a);
-	}
-	if (b)
-	{
-		free_stack(b);
-	}
-	exit(EXIT_FAILURE);
+	return (0);
 }

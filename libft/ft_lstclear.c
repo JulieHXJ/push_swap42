@@ -1,48 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xhuang <xhuang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/07 12:34:49 by xhuang            #+#    #+#             */
-/*   Updated: 2024/12/15 15:15:06 by xhuang           ###   ########.fr       */
+/*   Created: 2024/11/12 22:57:57 by junjun            #+#    #+#             */
+/*   Updated: 2024/11/15 15:59:30 by xhuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	free_arr(int *arr)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	if (arr)
-	{
-		free(arr);
-		arr = NULL;
-	}
-}
+	t_list	*temp;
 
-void	free_stack(t_stack *a)
-{
-	t_stack	*temp;
-
-	while (a)
+	if (!*lst || !del)
+		return ;
+	while (*lst)
 	{
-		temp = a;
-		a = a->next;
-		free(temp);
+		temp = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		(*lst) = temp;
 	}
-}
-
-void	error_free(t_stack *a, t_stack *b)
-{
-	ft_printf("Error\n");
-	if (a)
-	{
-		free_stack(a);
-	}
-	if (b)
-	{
-		free_stack(b);
-	}
-	exit(EXIT_FAILURE);
+	*lst = NULL;
 }

@@ -1,48 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xhuang <xhuang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/07 12:34:49 by xhuang            #+#    #+#             */
-/*   Updated: 2024/12/15 15:15:06 by xhuang           ###   ########.fr       */
+/*   Created: 2024/10/09 16:13:51 by xhuang            #+#    #+#             */
+/*   Updated: 2024/10/09 17:38:47 by xhuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	free_arr(int *arr)
+void	ft_bzero(void *s, size_t n)
 {
-	if (arr)
-	{
-		free(arr);
-		arr = NULL;
-	}
-}
+	size_t			i;
+	unsigned char	*str;
 
-void	free_stack(t_stack *a)
-{
-	t_stack	*temp;
-
-	while (a)
+	str = (unsigned char *)s;
+	i = 0;
+	while (i < n)
 	{
-		temp = a;
-		a = a->next;
-		free(temp);
+		str[i] = 0;
+		i++;
 	}
-}
-
-void	error_free(t_stack *a, t_stack *b)
-{
-	ft_printf("Error\n");
-	if (a)
-	{
-		free_stack(a);
-	}
-	if (b)
-	{
-		free_stack(b);
-	}
-	exit(EXIT_FAILURE);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rev_rotate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junjun <junjun@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xhuang <xhuang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 15:34:15 by xhuang            #+#    #+#             */
-/*   Updated: 2024/12/13 00:21:41 by junjun           ###   ########.fr       */
+/*   Updated: 2024/12/15 15:50:20 by xhuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 static void	rev_rotate(t_stack **stack)
 {
-	t_stack	*lsec;
 	t_stack	*last;
+	t_stack	*lsec;
 
 	if (!*stack || !(*stack)->next)
 		return ;
+	// last = last_node(*stack);
+	// lsec = last->prev;
 	last = *stack;
 	lsec = NULL;
 	while (last->next)
@@ -26,8 +28,11 @@ static void	rev_rotate(t_stack **stack)
 		lsec = last;
 		last = last->next;
 	}
+
 	lsec->next = NULL;
+	last->prev = NULL;
 	last->next = *stack;
+	(*stack)->prev = last;
 	*stack = last;
 }
 

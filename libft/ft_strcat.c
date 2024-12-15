@@ -1,48 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xhuang <xhuang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/07 12:34:49 by xhuang            #+#    #+#             */
-/*   Updated: 2024/12/15 15:15:06 by xhuang           ###   ########.fr       */
+/*   Created: 2024/11/24 17:50:35 by xhuang            #+#    #+#             */
+/*   Updated: 2024/11/24 18:01:29 by xhuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	free_arr(int *arr)
+char	*ft_strcat(char *s1, const char *s2)
 {
-	if (arr)
-	{
-		free(arr);
-		arr = NULL;
-	}
-}
+	int	i;
+	int	len;
 
-void	free_stack(t_stack *a)
-{
-	t_stack	*temp;
-
-	while (a)
+	len = ft_strlen(s1);
+	while (s2[i])
 	{
-		temp = a;
-		a = a->next;
-		free(temp);
+		s1[len + i] = s2[i];
+		i++;
 	}
-}
-
-void	error_free(t_stack *a, t_stack *b)
-{
-	ft_printf("Error\n");
-	if (a)
-	{
-		free_stack(a);
-	}
-	if (b)
-	{
-		free_stack(b);
-	}
-	exit(EXIT_FAILURE);
+	s1[len + i] = '\0';
+	return (s1);
 }

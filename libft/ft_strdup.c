@@ -1,48 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xhuang <xhuang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/07 12:34:49 by xhuang            #+#    #+#             */
-/*   Updated: 2024/12/15 15:15:06 by xhuang           ###   ########.fr       */
+/*   Created: 2024/10/09 18:13:44 by xhuang            #+#    #+#             */
+/*   Updated: 2024/10/09 18:14:19 by xhuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	free_arr(int *arr)
+char	*ft_strdup(const char *s1)
 {
-	if (arr)
-	{
-		free(arr);
-		arr = NULL;
-	}
-}
+	size_t	n;
+	char	*str;
 
-void	free_stack(t_stack *a)
-{
-	t_stack	*temp;
-
-	while (a)
-	{
-		temp = a;
-		a = a->next;
-		free(temp);
-	}
-}
-
-void	error_free(t_stack *a, t_stack *b)
-{
-	ft_printf("Error\n");
-	if (a)
-	{
-		free_stack(a);
-	}
-	if (b)
-	{
-		free_stack(b);
-	}
-	exit(EXIT_FAILURE);
+	n = ft_strlen(s1);
+	str = malloc(sizeof(char) * (n + 1));
+	if (str == NULL)
+		return (NULL);
+	ft_memcpy(str, s1, n);
+	str[n] = '\0';
+	return (str);
 }

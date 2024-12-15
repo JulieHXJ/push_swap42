@@ -1,48 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xhuang <xhuang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/07 12:34:49 by xhuang            #+#    #+#             */
-/*   Updated: 2024/12/15 15:15:06 by xhuang           ###   ########.fr       */
+/*   Created: 2024/10/09 17:31:57 by xhuang            #+#    #+#             */
+/*   Updated: 2024/10/09 18:27:29 by xhuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	free_arr(int *arr)
+void	ft_putnbr_fd(int n, int fd)
 {
-	if (arr)
-	{
-		free(arr);
-		arr = NULL;
-	}
-}
+	char	c;
 
-void	free_stack(t_stack *a)
-{
-	t_stack	*temp;
-
-	while (a)
+	if (n == -2147483648)
 	{
-		temp = a;
-		a = a->next;
-		free(temp);
+		write(fd, "-", 1);
+		write(fd, "2", 1);
+		n = 147483648;
 	}
-}
-
-void	error_free(t_stack *a, t_stack *b)
-{
-	ft_printf("Error\n");
-	if (a)
+	if (n < 0)
 	{
-		free_stack(a);
+		write(fd, "-", 1);
+		n = -n;
 	}
-	if (b)
-	{
-		free_stack(b);
-	}
-	exit(EXIT_FAILURE);
+	if (n >= 10)
+		ft_putnbr_fd(n / 10, fd);
+	c = (n % 10) + '0';
+	write(fd, &c, 1);
 }

@@ -1,48 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xhuang <xhuang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/07 12:34:49 by xhuang            #+#    #+#             */
-/*   Updated: 2024/12/15 15:15:06 by xhuang           ###   ########.fr       */
+/*   Created: 2024/10/09 18:20:36 by xhuang            #+#    #+#             */
+/*   Updated: 2024/10/13 13:27:53 by xhuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	free_arr(int *arr)
+char	*ft_strrchr(const char *s, int c)
 {
-	if (arr)
-	{
-		free(arr);
-		arr = NULL;
-	}
-}
+	int		i;
+	char	*there;
+	char	cc;
 
-void	free_stack(t_stack *a)
-{
-	t_stack	*temp;
-
-	while (a)
+	i = 0;
+	there = NULL;
+	cc = (char) c;
+	while (s[i] != '\0')
 	{
-		temp = a;
-		a = a->next;
-		free(temp);
+		if (s[i] == cc)
+			there = (char *)&s[i];
+		i++;
 	}
-}
-
-void	error_free(t_stack *a, t_stack *b)
-{
-	ft_printf("Error\n");
-	if (a)
-	{
-		free_stack(a);
-	}
-	if (b)
-	{
-		free_stack(b);
-	}
-	exit(EXIT_FAILURE);
+	if (cc == '\0')
+		return ((char *)s + i);
+	return (there);
 }

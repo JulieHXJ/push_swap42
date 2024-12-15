@@ -1,48 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xhuang <xhuang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/07 12:34:49 by xhuang            #+#    #+#             */
-/*   Updated: 2024/12/15 15:15:06 by xhuang           ###   ########.fr       */
+/*   Created: 2024/10/09 17:29:34 by xhuang            #+#    #+#             */
+/*   Updated: 2024/10/09 17:30:02 by xhuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	free_arr(int *arr)
+void	*ft_memmove(void *dst, const void *src, size_t n)
 {
-	if (arr)
-	{
-		free(arr);
-		arr = NULL;
-	}
-}
+	size_t	i;
+	char	*s;
+	char	*d;
 
-void	free_stack(t_stack *a)
-{
-	t_stack	*temp;
-
-	while (a)
+	i = 0;
+	s = (char *)src;
+	d = (char *)dst;
+	if (!src && !dst)
+		return (0);
+	if (d > s)
 	{
-		temp = a;
-		a = a->next;
-		free(temp);
+		while (n > 0)
+		{
+			d[n - 1] = s[n -1];
+			n--;
+		}
 	}
-}
-
-void	error_free(t_stack *a, t_stack *b)
-{
-	ft_printf("Error\n");
-	if (a)
+	while (i < n)
 	{
-		free_stack(a);
+		d[i] = s[i];
+		i++;
 	}
-	if (b)
-	{
-		free_stack(b);
-	}
-	exit(EXIT_FAILURE);
+	return (dst);
 }

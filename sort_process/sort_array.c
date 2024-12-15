@@ -3,132 +3,90 @@
 /*                                                        :::      ::::::::   */
 /*   sort_array.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junjun <junjun@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xhuang <xhuang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 15:46:31 by junjun            #+#    #+#             */
-/*   Updated: 2024/12/12 23:25:13 by junjun           ###   ########.fr       */
+/*   Updated: 2024/12/15 18:15:26 by xhuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int *to_arr(t_stack **a)
+int	*to_arr(t_stack *a)
 {
-	int *arr;
-	int len;
-	int i;
-	
-	i = 0;
-	len = stack_length(*a);
+	int	*arr;
+	int	len;
+	int	i;
+
+	len = stack_length(a);
 	arr = malloc(sizeof(int) * len);
 	if (!arr)
 		return (NULL);
-	while (*a)
+	i = 0;
+	while (a)
 	{
-		arr[i] = (*a)->data;
-		*a = (*a)->next;
-		i++;
+		arr[i++] = a->data;
+		a = a->next;
 	}
 	return (arr);
 }
 
-static void    counting_sort(int *arr, int len, int exp)
-{
-    int output[len];
-    int count[10] = {0};
-    int i;
-    int digit;
-    
-    i = 0;
-    while (i < len)
-    {
-        digit = (arr[i] / exp) % 10;
-        count[digit]++;
-        i++;
-    }
-    i = 1;
-    while (i < 10)
-    {
-        count[i] += count[i - 1];
-        i++;
-    }
-    i = len - 1;
-    while (i >= 0)
-    {
-        digit = (arr[i] / exp) % 10;
-        output[count[digit] - 1] = arr[i];
-        count[digit]--;
-        i--;
-    }
-    i = 0;
-    while (i < len)
-        arr[i++] = output[i++];
-    
-}
-
-static void    radix_sort(int *arr, int len)
-{
-    int exp;
-    int max;
-	int i;
-	int origin;
-
-	i = 0;
-    max = 0;
-	origin = arr[0];
-    while (i < len)
-    {
-		arr[i] = abs(arr[i]);
-        if (arr[i] > max)
-            max = arr[i];
-        i++;
-    }
-    exp = 1;
-    while (max / exp > 0)
-    {
-        counting_sort(arr, len, exp);
-        exp *= 10;
-    }
-	if (origin < 0)
-	{
-		i = 0;
-		while (i < len)
-		{
-			arr[i] = -arr[i];
-			i++;
-		}
-	}
-}
-
 int	*sort_arr(t_stack *a, int len)
 {
-	int *arr = to_arr(a);
-    int *arr_pos;
-    int *arr_neg;
-	int pos_len = 0;
-	int neg_len = 0;
-	int i;
-    
-	arr_pos = malloc(len * sizeof(int));
-	arr_neg = malloc(len * sizeof(int));
-	if (!arr_pos || !arr_neg)
-		return ;
+	int	*arr;
+	int	temp;
+	int	i;
+
 	i = 0;
-	while (i < len)
+	arr = to_arr(a);
+	while (i < len - 1)
 	{
-		if (arr[i] >= 0)
-			arr_pos[pos_len++] = arr[i];
+		if (arr[i] <= arr[i + 1])
+			i++;
 		else
-			arr_neg[neg_len++] = arr[i];
-		i++;
+		{
+			temp = arr[i];
+			arr[i] = arr[i + 1];
+			arr[i + 1] = temp;
+			i = 0;
+		}
 	}
-	radix_sort(arr_pos, pos_len);
-	if (neg_len > 0)
-		radix_sort(arr_neg, neg_len);
-	ft_memcpy(arr, arr_neg, (size_t)neg_len);
-	ft_memcpy(arr + neg_len, arr_pos, (size_t)pos_len);
-    free(arr_neg);
-	free(arr_pos);
-	return(arr);
+	return (arr);
 }
 
+static bool	above_median(t_stack *stack, t_stack *node)
+{
+	int		position;
+	int		len;
+	t_stack	*temp;
+
+	position = 0;
+	len = stack_length(stack);
+	temp = stack;
+	while (temp)
+	{
+		if (temp == node)
+			break ;
+		position++;
+		if (position > len / 2)
+			return (false);
+		temp = temp->next;
+	}
+	return (true);
+}
+
+/*
+to move the node to the top of the stack for pushing
+*/
+void	to_top(t_stack **stack, t_stack *node)
+{
+	if (!*stack || !node)
+		return ;
+	while (*stack != node)
+	{
+		if (above_median(*stack, node))
+			ra(stack, false);
+		else
+			rra(stack, false);
+	}
+}

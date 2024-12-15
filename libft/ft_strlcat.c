@@ -1,48 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xhuang <xhuang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/07 12:34:49 by xhuang            #+#    #+#             */
-/*   Updated: 2024/12/15 15:15:06 by xhuang           ###   ########.fr       */
+/*   Created: 2024/10/09 18:16:06 by xhuang            #+#    #+#             */
+/*   Updated: 2024/10/09 18:16:39 by xhuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	free_arr(int *arr)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	if (arr)
-	{
-		free(arr);
-		arr = NULL;
-	}
-}
+	size_t	i;
+	size_t	dst_len;
 
-void	free_stack(t_stack *a)
-{
-	t_stack	*temp;
-
-	while (a)
+	i = 0;
+	dst_len = ft_strlen(dst);
+	if (dstsize <= dst_len)
+		return (ft_strlen(src) + dstsize);
+	while (src[i] && dst_len + i < dstsize - 1)
 	{
-		temp = a;
-		a = a->next;
-		free(temp);
+		dst[i + dst_len] = src[i];
+		i++;
 	}
-}
-
-void	error_free(t_stack *a, t_stack *b)
-{
-	ft_printf("Error\n");
-	if (a)
-	{
-		free_stack(a);
-	}
-	if (b)
-	{
-		free_stack(b);
-	}
-	exit(EXIT_FAILURE);
+	dst[i + dst_len] = '\0';
+	return (dst_len + ft_strlen(src));
 }
