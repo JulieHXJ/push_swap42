@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junjun <junjun@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xhuang <xhuang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 15:33:51 by xhuang            #+#    #+#             */
-/*   Updated: 2024/12/16 00:27:05 by junjun           ###   ########.fr       */
+/*   Updated: 2024/12/16 18:56:12 by xhuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,14 @@ void	ra(t_stack **a, bool print)
 {
 	rotate(a);
 	if (!print)
-		ft_putendl_fd("ra", 2);
+		ft_printf("ra\n");
 }
 
 void	rb(t_stack **b, bool print)
 {
 	rotate(b);
 	if (!print)
-		ft_putendl_fd("rb", 2);
+		ft_printf("rb\n");
 }
 
 void	rr(t_stack **a, t_stack **b, bool print)
@@ -46,5 +46,5 @@ void	rr(t_stack **a, t_stack **b, bool print)
 	rotate(a);
 	rotate(b);
 	if (!print)
-		ft_putendl_fd("rr", 2);
+		ft_printf("rr\n");
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junjun <junjun@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xhuang <xhuang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 14:06:29 by xhuang            #+#    #+#             */
-/*   Updated: 2024/12/16 01:43:10 by junjun           ###   ########.fr       */
+/*   Updated: 2024/12/16 18:54:36 by xhuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ typedef struct s_stack
 {
 	int				data;
 	int				targ_index;
-	int				push_cost;
 	bool			above_median;
 
 	struct s_stack	*next;
@@ -46,7 +45,6 @@ void				rrb(t_stack **b, bool print);
 void				rrr(t_stack **a, t_stack **b, bool print);
 void				pa(t_stack **a, t_stack **b, bool print);
 void				pb(t_stack **a, t_stack **b, bool print);
-void	push_pop(t_stack **a, t_stack **b, t_stack *node, bool print);
 
 // sorting argorithm
 bool				is_sorted(t_stack *a);
@@ -54,12 +52,15 @@ int					stack_length(t_stack *a);
 t_stack				*last_node(t_stack *a);
 t_stack				*min_node(t_stack *a);
 t_stack				*max_node(t_stack *a);
-int	*sort_arr(t_stack *a, int len);
+int					*sort_arr(t_stack *a, int len);
+int					square_root(int n);
 void				to_top(t_stack **stack, t_stack *node);
+void				to_top_b(t_stack **stack, t_stack *node);
 
-void				sort_five(t_stack **a, t_stack **b);
-void				radix_sort(t_stack **a, t_stack **b, int len);
-void				merge_sort(t_stack **a, t_stack **b);
+void				insert_sort(t_stack **a, t_stack **b);
+// void				radix_sort(t_stack **a, t_stack **b, int len);
+void				ksort_to_b(t_stack **a, t_stack **b, int len);
+void				ksort_to_a(t_stack **a, t_stack **b);
 
 // error handling
 void				free_arr(int *arr);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junjun <junjun@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xhuang <xhuang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 15:45:51 by junjun            #+#    #+#             */
-/*   Updated: 2024/12/16 00:26:30 by junjun           ###   ########.fr       */
+/*   Updated: 2024/12/16 18:55:42 by xhuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,13 @@ void	pa(t_stack **a, t_stack **b, bool print)
 {
 	push(a, b);
 	if (!print)
-		ft_putendl_fd("pa", 2);
+		ft_printf("pa\n");
 }
 
 void	pb(t_stack **a, t_stack **b, bool print)
 {
 	push(b, a);
 	if (!print)
-		ft_putendl_fd("pb", 2);
+		ft_printf("pb\n");
 }
 
-void	push_pop(t_stack **a, t_stack **b, t_stack *node, bool print)
-{
-	to_top(a, node);
-	pb(a, b, print);
-	// return (*a);
-}

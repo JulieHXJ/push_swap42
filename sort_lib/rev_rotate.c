@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rev_rotate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junjun <junjun@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xhuang <xhuang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 15:34:15 by xhuang            #+#    #+#             */
-/*   Updated: 2024/12/16 00:26:55 by junjun           ###   ########.fr       */
+/*   Updated: 2024/12/16 19:31:39 by xhuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ static void	rev_rotate(t_stack **stack)
 
 	if (!*stack || !(*stack)->next)
 		return ;
-	// last = last_node(*stack);
-	// lsec = last->prev;
 	last = *stack;
 	lsec = NULL;
 	while (last->next)
@@ -28,7 +26,6 @@ static void	rev_rotate(t_stack **stack)
 		lsec = last;
 		last = last->next;
 	}
-
 	lsec->next = NULL;
 	last->prev = NULL;
 	last->next = *stack;
@@ -40,14 +37,14 @@ void	rra(t_stack **a, bool print)
 {
 	rev_rotate(a);
 	if (!print)
-		ft_putendl_fd("rra", 2);
+		ft_printf("rra\n");
 }
 
 void	rrb(t_stack **b, bool print)
 {
 	rev_rotate(b);
 	if (!print)
-		ft_putendl_fd("rrb", 2);
+		ft_printf("rrb\n");
 }
 
 void	rrr(t_stack **a, t_stack **b, bool print)
@@ -55,5 +52,5 @@ void	rrr(t_stack **a, t_stack **b, bool print)
 	rev_rotate(a);
 	rev_rotate(b);
 	if (!print)
-		ft_putendl_fd("rrr", 2);
+		ft_printf("rrr\n");
 }

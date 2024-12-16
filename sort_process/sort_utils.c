@@ -6,7 +6,7 @@
 /*   By: xhuang <xhuang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 15:46:08 by junjun            #+#    #+#             */
-/*   Updated: 2024/12/15 14:35:24 by xhuang           ###   ########.fr       */
+/*   Updated: 2024/12/16 19:34:34 by xhuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ t_stack	*min_node(t_stack *a)
 {
 	t_stack	*min;
 
+	if (!a)
+		return (NULL);
 	min = a;
 	while (a)
 	{
 		if (a->data < min->data)
-		{
 			min = a;
-		}
 		a = a->next;
 	}
 	return (min);
@@ -52,6 +52,8 @@ t_stack	*max_node(t_stack *a)
 {
 	t_stack	*max;
 
+	if (!a)
+		return (NULL);
 	max = a;
 	while (a)
 	{

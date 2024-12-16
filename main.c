@@ -3,28 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junjun <junjun@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xhuang <xhuang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 15:35:26 by xhuang            #+#    #+#             */
-/*   Updated: 2024/12/16 01:20:17 by junjun           ###   ########.fr       */
+/*   Updated: 2024/12/16 19:34:59 by xhuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
-
-void print_stack(t_stack *stack)
-{
-    printf("Stack contents:\n");
-    while (stack)
-    {
-        printf("Node: %p, Data: %d, Prev: %p, Next: %p\n",
-               stack, stack->data, stack->prev, stack->next);
-        stack = stack->next;
-    }
-    printf("\n");
-}
-
 
 int	main(int ac, char **av)
 {
@@ -43,12 +29,13 @@ int	main(int ac, char **av)
 	len = stack_length(a);
 	if (!is_sorted(a))
 	{
-		if (len < 6)
-			sort_five(&a, &b);
-		// else if (len <= 20)
-		// 	insertion sort
+		if (len < 20)
+			insert_sort(&a, &b);
 		else
-			radix_sort(&a, &b, len);
+		{
+			ksort_to_b(&a, &b, len);
+			ksort_to_a(&a, &b);
+		}
 	}
 	free_stack(a);
 	return (0);
