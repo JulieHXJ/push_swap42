@@ -6,7 +6,7 @@
 /*   By: junjun <junjun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 14:06:29 by xhuang            #+#    #+#             */
-/*   Updated: 2024/12/16 00:58:39 by junjun           ###   ########.fr       */
+/*   Updated: 2024/12/16 01:43:10 by junjun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_stack
 {
 	int				data;
 	int				targ_index;
+	int				push_cost;
 	bool			above_median;
 
 	struct s_stack	*next;
@@ -56,7 +57,7 @@ t_stack				*max_node(t_stack *a);
 int	*sort_arr(t_stack *a, int len);
 void				to_top(t_stack **stack, t_stack *node);
 
-void				sort_small(t_stack **a, t_stack **b);
+void				sort_five(t_stack **a, t_stack **b);
 void				radix_sort(t_stack **a, t_stack **b, int len);
 void				merge_sort(t_stack **a, t_stack **b);
 

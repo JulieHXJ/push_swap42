@@ -6,7 +6,7 @@
 /*   By: junjun <junjun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 15:35:26 by xhuang            #+#    #+#             */
-/*   Updated: 2024/12/16 01:08:35 by junjun           ###   ########.fr       */
+/*   Updated: 2024/12/16 01:20:17 by junjun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int	main(int ac, char **av)
 	len = stack_length(a);
 	if (!is_sorted(a))
 	{
-		if (len <= 6)
-			sort_small(&a, &b);
+		if (len < 6)
+			sort_five(&a, &b);
 		// else if (len <= 20)
 		// 	insertion sort
 		else
