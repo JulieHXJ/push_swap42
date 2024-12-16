@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xhuang <xhuang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: junjun <junjun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 15:35:26 by xhuang            #+#    #+#             */
-/*   Updated: 2024/12/15 21:04:36 by xhuang           ###   ########.fr       */
+/*   Updated: 2024/12/16 01:08:35 by junjun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	main(int ac, char **av)
 	a = NULL;
 	b = NULL;
 	if (ac <= 1 || !*av[1])
-		return (ft_printf("Error\n"), -1);
+		return (0);
 	else if (ac == 2)
 		a = split_to_stack(av[1], ' ');
 	else
@@ -43,17 +43,13 @@ int	main(int ac, char **av)
 	len = stack_length(a);
 	if (!is_sorted(a))
 	{
-		if (len < 6)
-			sort_five(&a, &b);
+		if (len <= 6)
+			sort_small(&a, &b);
+		// else if (len <= 20)
+		// 	insertion sort
 		else
 			radix_sort(&a, &b, len);
 	}
-
-	// printf("Final stack A:\n");
-    // print_stack(a);
-    // printf("Final stack B:\n");
-    // print_stack(b);
-	
 	free_stack(a);
 	return (0);
 }

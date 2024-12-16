@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rev_rotate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xhuang <xhuang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: junjun <junjun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 15:34:15 by xhuang            #+#    #+#             */
-/*   Updated: 2024/12/15 15:50:20 by xhuang           ###   ########.fr       */
+/*   Updated: 2024/12/16 00:26:55 by junjun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,14 @@ void	rra(t_stack **a, bool print)
 {
 	rev_rotate(a);
 	if (!print)
-		ft_printf("rra\n");
+		ft_putendl_fd("rra", 2);
 }
 
 void	rrb(t_stack **b, bool print)
 {
 	rev_rotate(b);
 	if (!print)
-		ft_printf("rrb\n");
+		ft_putendl_fd("rrb", 2);
 }
 
 void	rrr(t_stack **a, t_stack **b, bool print)
@@ -55,5 +55,5 @@ void	rrr(t_stack **a, t_stack **b, bool print)
 	rev_rotate(a);
 	rev_rotate(b);
 	if (!print)
-		ft_printf("rrr\n");
+		ft_putendl_fd("rrr", 2);
 }

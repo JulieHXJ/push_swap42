@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xhuang <xhuang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: junjun <junjun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 14:06:29 by xhuang            #+#    #+#             */
-/*   Updated: 2024/12/15 16:21:18 by xhuang           ###   ########.fr       */
+/*   Updated: 2024/12/16 00:58:39 by junjun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_stack				*max_node(t_stack *a);
 int	*sort_arr(t_stack *a, int len);
 void				to_top(t_stack **stack, t_stack *node);
 
-void				sort_five(t_stack **a, t_stack **b);
+void				sort_small(t_stack **a, t_stack **b);
 void				radix_sort(t_stack **a, t_stack **b, int len);
 void				merge_sort(t_stack **a, t_stack **b);
 

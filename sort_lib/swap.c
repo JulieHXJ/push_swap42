@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xhuang <xhuang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: junjun <junjun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 14:03:30 by xhuang            #+#    #+#             */
-/*   Updated: 2024/12/15 15:36:27 by xhuang           ###   ########.fr       */
+/*   Updated: 2024/12/16 00:27:17 by junjun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ void	sa(t_stack **a, bool print)
 {
 	swap(a);
 	if (!print)
-		ft_printf("sa\n");
+		ft_putendl_fd("sa", 2);
 }
 
 void	sb(t_stack **b, bool print)
 {
 	swap(b);
 	if (!print)
-		ft_printf("sb\n");
+		ft_putendl_fd("sb", 2);
 }
 
 void	ss(t_stack **a, t_stack **b, bool print)
@@ -49,5 +49,5 @@ void	ss(t_stack **a, t_stack **b, bool print)
 	swap(a);
 	swap(b);
 	if (!print)
-		ft_printf("ss\n");
+		ft_putendl_fd("ss", 2);
 }

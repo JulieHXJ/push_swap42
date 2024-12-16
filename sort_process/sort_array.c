@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_array.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xhuang <xhuang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: junjun <junjun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 15:46:31 by junjun            #+#    #+#             */
-/*   Updated: 2024/12/15 18:15:26 by xhuang           ###   ########.fr       */
+/*   Updated: 2024/12/15 22:23:09 by junjun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,11 @@ static bool	above_median(t_stack *stack, t_stack *node)
 		if (temp == node)
 			break ;
 		position++;
-		if (position > len / 2)
-			return (false);
 		temp = temp->next;
 	}
-	return (true);
+	if (!temp)
+		return (false);
+	return (position <= len / 2);
 }
 
 /*

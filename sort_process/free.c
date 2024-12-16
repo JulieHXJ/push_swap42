@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xhuang <xhuang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: junjun <junjun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 12:34:49 by xhuang            #+#    #+#             */
-/*   Updated: 2024/12/15 15:15:06 by xhuang           ###   ########.fr       */
+/*   Updated: 2024/12/16 01:09:51 by junjun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,10 @@ void	free_stack(t_stack *a)
 	}
 }
 
+
 void	error_free(t_stack *a, t_stack *b)
 {
-	ft_printf("Error\n");
+	ft_putendl_fd("Error", 2);
 	if (a)
 	{
 		free_stack(a);
