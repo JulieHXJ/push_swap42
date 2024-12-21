@@ -6,7 +6,7 @@
 /*   By: xhuang <xhuang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 14:06:29 by xhuang            #+#    #+#             */
-/*   Updated: 2024/12/16 18:54:36 by xhuang           ###   ########.fr       */
+/*   Updated: 2024/12/21 19:27:24 by xhuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,7 @@ typedef struct s_stack
 }					t_stack;
 
 // initialization
-long				ft_atol(char *s);
-bool				append_node(t_stack **stack, int n);
-t_stack				*split_to_stack(char *s, char c);
-void				args_to_stack(t_stack **a, char **av);
+void				to_stack(t_stack **a, char **av);
 
 // sorting library
 void				sa(t_stack **a, bool print);
@@ -63,7 +60,8 @@ void				ksort_to_b(t_stack **a, t_stack **b, int len);
 void				ksort_to_a(t_stack **a, t_stack **b);
 
 // error handling
-void				free_arr(int *arr);
+void				free_int_arr(int *arr);
+void				free_str_arr(char **arr);
 void				free_stack(t_stack *a);
 void				error_free(t_stack *a, t_stack *b);
 

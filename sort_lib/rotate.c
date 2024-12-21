@@ -6,7 +6,7 @@
 /*   By: xhuang <xhuang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 15:33:51 by xhuang            #+#    #+#             */
-/*   Updated: 2024/12/16 18:56:12 by xhuang           ###   ########.fr       */
+/*   Updated: 2024/12/21 17:51:28 by xhuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ static void	rotate(t_stack **stack)
 
 	if (!(*stack) || !(*stack)->next)
 		return ;
-
 	last = last_node(*stack);
 	last->next = *stack;
 	*stack = (*stack)->next;

@@ -6,13 +6,13 @@
 /*   By: xhuang <xhuang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 12:34:49 by xhuang            #+#    #+#             */
-/*   Updated: 2024/12/16 19:32:04 by xhuang           ###   ########.fr       */
+/*   Updated: 2024/12/21 19:13:29 by xhuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_arr(int *arr)
+void	free_int_arr(int *arr)
 {
 	if (arr)
 	{
@@ -21,10 +21,27 @@ void	free_arr(int *arr)
 	}
 }
 
+void	free_str_arr(char **arr)
+{
+	int	i;
+
+	if (!arr)
+		return ;
+	i = 0;
+	while (arr[i])
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
+}
+
 void	free_stack(t_stack *a)
 {
 	t_stack	*temp;
 
+	if (!a)
+		return ;
 	while (a)
 	{
 		temp = a;

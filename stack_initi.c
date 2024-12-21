@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   args_to_stack.c                                    :+:      :+:    :+:   */
+/*   stack_initi.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xhuang <xhuang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 15:46:41 by junjun            #+#    #+#             */
-/*   Updated: 2024/12/16 18:55:12 by xhuang           ###   ########.fr       */
+/*   Updated: 2024/12/21 19:27:51 by xhuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*
-check if stack a is already in right order
-*/
-bool	is_sorted(t_stack *a)
+static long	ft_atol(char *s)
 {
-	while (a->next)
+	int		sign;
+	long	nbr;
+	int		i;
+
+	sign = 1;
+	nbr = 0;
+	i = 0;
+	while (s[i] < 33)
+		i++;
+	if (s[i] == '-' || s[i] == '+')
 	{
-		if (a->data > a->next->data)
-			return (false);
-		a = a->next;
+		if (s[i] == '-')
+			sign = -1;
+		i++;
 	}
-	return (true);
+	while (s[i] >= '0' && s[i] <= '9')
+	{
+		nbr = nbr * 10 + (s[i] - '0');
+		i++;
+	}
+	return (nbr * sign);
 }
 
 static bool	cmd_error(char *s)
@@ -52,7 +63,7 @@ static bool	is_dup(t_stack *stack, int n)
 	return (false);
 }
 
-bool	append_node(t_stack **stack, int n)
+static bool	append_node(t_stack **stack, int n)
 {
 	t_stack	*new;
 	t_stack	*last;
@@ -77,12 +88,12 @@ bool	append_node(t_stack **stack, int n)
 /*
 take arguments to initialize the stack a.
 */
-void	args_to_stack(t_stack **a, char **av)
+void	to_stack(t_stack **a, char **av)
 {
 	long	nbr;
 	int		i;
 
-	i = 1;
+	i = 0;
 	while (av[i])
 	{
 		if (cmd_error(av[i]))

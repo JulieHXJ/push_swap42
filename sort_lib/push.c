@@ -6,7 +6,7 @@
 /*   By: xhuang <xhuang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 15:45:51 by junjun            #+#    #+#             */
-/*   Updated: 2024/12/16 18:55:42 by xhuang           ###   ########.fr       */
+/*   Updated: 2024/12/21 17:51:14 by xhuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,3 @@ void	pb(t_stack **a, t_stack **b, bool print)
 	if (!print)
 		ft_printf("pb\n");
 }
-

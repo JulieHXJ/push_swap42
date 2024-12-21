@@ -6,7 +6,7 @@
 /*   By: xhuang <xhuang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 15:46:22 by junjun            #+#    #+#             */
-/*   Updated: 2024/12/16 19:34:09 by xhuang           ###   ########.fr       */
+/*   Updated: 2024/12/21 19:11:28 by xhuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	ksort_to_b(t_stack **a, t_stack **b, int len)
 	range = square_root(len) * 14 / 10;
 	arr = sort_arr(*a, len);
 	init_index(*a, arr);
-	free_arr(arr);
+	free_int_arr(arr);
 	while (*a)
 	{
 		if ((*a)->targ_index <= i)
@@ -138,7 +138,7 @@ void	ksort_to_a(t_stack **a, t_stack **b)
 
 // 	arr = sort_arr(*a, len);
 // 	init_index(*a, arr);
-// 	free_arr(arr);
+// 	free_int_arr(arr);
 // 	digit = 1;
 // 	while (((len - 1) / digit) > 0)
 // 	{

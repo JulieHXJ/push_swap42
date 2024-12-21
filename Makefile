@@ -6,7 +6,7 @@
 #    By: xhuang <xhuang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/06 17:55:25 by xhuang            #+#    #+#              #
-#    Updated: 2024/12/15 14:50:44 by xhuang           ###   ########.fr        #
+#    Updated: 2024/12/21 19:26:18 by xhuang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,9 +23,8 @@ RM = rm -f
 
 INCLUDE = -I.
 
-SRCS = stack_initi/args_to_stack.c stack_initi/split_to_stack.c \
-		sort_lib/push.c sort_lib/rev_rotate.c sort_lib/rotate.c sort_lib/swap.c \
-		sort_process/free.c sort_process/sort_array.c sort_process/sort_stack.c sort_process/sort_utils.c \
+SRCS = sort_lib/push.c sort_lib/rev_rotate.c sort_lib/rotate.c sort_lib/swap.c \
+		free.c sort_array.c sort_stack.c sort_utils.c stack_initi.c\
 		main.c
 
 SRCOBJ := $(SRCS:%.c=%.o) 
